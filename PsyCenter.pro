@@ -10,22 +10,38 @@ CONFIG += c++11
 
 SOURCES += \
     DialogEnter/dialogenter.cpp \
-    User.cpp \
-    formspecialistgeneral.cpp \
+    Note.cpp \
+    WidgetAdministrator/formadministratorgeneral.cpp \
+    WidgetDev/formdevgeneral.cpp \
+    WidgetSpecialist/formspecialistgeneral.cpp \
     main.cpp \
-    mainwindow.cpp
+    mianwindow.cpp \
+    models/querymodelclient.cpp \
+    persons/Administrator.cpp \
+    persons/Client.cpp \
+    persons/Person.cpp \
+    persons/Specialist.cpp
 
 HEADERS += \
     DialogEnter/dialogenter.h \
-    User.h \
-    formspecialistgeneral.h \
-    isValid.h \
-    mainwindow.h
+    Note.h \
+    WidgetAdministrator/formadministratorgeneral.h \
+    WidgetDev/formdevgeneral.h \
+    WidgetSpecialist/formspecialistgeneral.h \
+    loginIsValid.h \
+    mianwindow.h \
+    models/querymodelclient.h \
+    persons/Administrator.h \
+    persons/Client.h \
+    persons/Person.h \
+    persons/Specialist.h
 
 FORMS += \
     DialogEnter/dialogenter.ui \
-    formspecialistgeneral.ui \
-    mainwindow.ui
+    WidgetAdministrator/formadministratorgeneral.ui \
+    WidgetDev/formdevgeneral.ui \
+    WidgetSpecialist/formspecialistgeneral.ui \
+    mianwindow.ui
 
 TRANSLATIONS += \
     PsyCenter_ru_RU.ts

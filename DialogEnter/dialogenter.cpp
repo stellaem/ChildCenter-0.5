@@ -7,6 +7,9 @@ DialogEnter::DialogEnter(QWidget *parent) :
 {
     ui->setupUi(this);
     edit_login = ui->lineEdit_login;
+    edit_role = ui->comboBox_role;
+    edit_password = ui->lineEdit_password;
+
 }
 
 

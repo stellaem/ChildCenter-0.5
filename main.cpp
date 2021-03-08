@@ -4,11 +4,12 @@
 #include <QSqlError>
 #include <QDebug>
 
-#include "mainwindow.h"
+#include "mianwindow.h"
 #include "DialogEnter/dialogenter.h"
-#include "User.h"
-#include "isValid.h"
-#include "formspecialistgeneral.h"
+#include "loginIsValid.h"
+#include "WidgetSpecialist/formspecialistgeneral.h"
+#include "WidgetAdministrator/formadministratorgeneral.h"
+#include "WidgetDev/formdevgeneral.h"
 
 
 bool loginIsValid(QString login);
@@ -22,20 +23,29 @@ int main(int argc, char *argv[])
     db.open();
 
     DialogEnter d = DialogEnter();
-    MainWindow w;
+    MainWindow win = MainWindow();
 
     if (d.exec() == QDialog::Accepted)
     {
-        if(loginIsValid(d.login()))
+        if (d.role() == QString("specialist") && loginIsValid(d.role(), d.login(), d.password()))
         {
-            w.setUserLogin(d.login());
-            w.setUserPosition(1);
-            if (w.userPosition() ==1)
-            {
-                FormSpecialistGeneral *generalWidget = new FormSpecialistGeneral();
-                w.setCentralWidget(generalWidget);
-            }
-            w.show();
+            FormSpecialistGeneral *gWid = new FormSpecialistGeneral();
+            gWid->setSpParam(d.login());
+            win.setCentralWidget(gWid);
+            win.show();
+        }
+        else if(d.role() == QString("administrator") && loginIsValid(d.role(), d.login(), d.password()))
+        {
+            FormAdministratorGeneral *gWid = new FormAdministratorGeneral();
+            gWid->setAdminParam(d.login());
+            win.setCentralWidget(gWid);
+            win.show();
+        }
+        else if(d.role() == QString("program developer") && loginIsValid(d.role(), d.login(), d.password()))
+        {
+            FormDevGeneral *gWid = new FormDevGeneral();
+            win.setCentralWidget(gWid);
+            win.show();
         }
         else return 0;
     }

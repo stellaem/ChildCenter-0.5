@@ -35,6 +35,11 @@
         <string>administrator</string>
        </property>
       </item>
+      <item>
+       <property name="text">
+        <string>program developer</string>
+       </property>
+      </item>
      </widget>
     </widget>
    </item>
