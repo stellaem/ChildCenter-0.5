@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/QML">
+        <file>administration/adminTimetable.qml</file>
+        <file>administration/itemTimetable.qml</file>
+        <file>administration/emptyGridTimetable.qml</file>
+    </qresource>
+    <qresource prefix="/"/>
+</RCC>

@@ -10,28 +10,28 @@ class Specialist : virtual public Person // name, patronymic, surname, birthday,
 public:
 	Specialist() : Person() {};
 
-
-    QList<Qualification> qualification() const { return l_qualification; };
-
-
-    void setQualification(const QList<Qualification> & value) { l_qualification = value; };
-
+    void setQualification(const QList<Qualification> & value) { listQualification = value; };
 	virtual ~Specialist() {};
 
+    QList<Qualification> getQualification() const{ return listQualification; };
+
+    int getId() const{ return id; };
+    void setId(int value){ id = value; }
+;
+
 private:
-
-    QList<Qualification> l_qualification;
+    int id;
+    QList<Qualification> listQualification;
 };
-
 
 class Qualification
 {
 public:
     Qualification() {};
-	virtual ~Qualification() {};
+    virtual ~Qualification() {};
 private:
-	QString s_name;
-	QPixmap p_document;
-	QDate d_confirm;
+    QString name;
+    QPixmap document;
+    QDate confirm;
 };
 

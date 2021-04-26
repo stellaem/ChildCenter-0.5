@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>FormDevGeneral</class>
- <widget class="QWidget" name="FormDevGeneral">
+ <class>WidgetClientBase</class>
+ <widget class="QWidget" name="WidgetClientBase">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,11 +13,16 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <widget class="QListWidget" name="listWidget_program"/>
-   </item>
-  </layout>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>120</y>
+     <width>113</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

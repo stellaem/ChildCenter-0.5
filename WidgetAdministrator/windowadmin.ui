@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WindowAdmin</class>
+ <widget class="QMainWindow" name="WindowAdmin">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QSplitter" name="splitter">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>170</y>
+      <width>161</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+    <widget class="QPushButton" name="pushButton_timetable">
+     <property name="text">
+      <string>timetable</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_client">
+     <property name="text">
+      <string>clients</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_staff">
+     <property name="text">
+      <string>staff</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_session">
+     <property name="text">
+      <string>Sessions</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_task">
+     <property name="text">
+      <string>Tasks and events</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

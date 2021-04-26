@@ -12,13 +12,13 @@ public:
 	Client() : Person() {};
 	virtual ~Client() {};
 private:
-	int n_numCard;
-	QDate d_firstConsult;
-	QPixmap p_questionnaire;
-	QPixmap p_contract;
-	QList <QPixmap> l_survey;
-	QList <Request> l_request;
-    QList <Recommendation> l_recommendation;
+    int numCard;
+    QDate firstConsult;
+    QPixmap questionnaire;
+    QPixmap contract;
+    QList <QPixmap> listSurvey;
+    QList <Request> listRequest;
+    QList <Recommendation> listRecommendation;
 
 };
 
@@ -28,12 +28,12 @@ public:
 	Recommendation() {};
 	virtual ~Recommendation() {};
 private:
-	int i_id;
-	int i_id_client;
-	int i_type;
-	QString s_text;
-	QDate d_date;
-	bool is_actual;
+    int id;
+    int idClient;
+    int type;
+    QString text;
+    QDate date;
+    bool isActual;
 };
 
 class Request
@@ -42,14 +42,14 @@ public:
 	Request() {};
 	virtual ~Request() {};
 private:
-	int i_id;
-	int i_id_client;
-	QString s_internalCode;
-	QString s_complaint;
-	QString s_goal;
-	QString s_note;
-	bool is_completed;
-	QDate d_start;
-	QDate d_end;
+    int id;
+    int idClient;
+    QString internalCode;
+    QString complaint;
+    QString goal;
+    QString note;
+    bool completed;
+    QDate start;
+    QDate end;
 };
 

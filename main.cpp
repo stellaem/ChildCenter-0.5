@@ -4,48 +4,54 @@
 #include <QSqlError>
 #include <QDebug>
 
-#include "mianwindow.h"
+
 #include "DialogEnter/dialogenter.h"
 #include "loginIsValid.h"
-#include "WidgetSpecialist/formspecialistgeneral.h"
-#include "WidgetAdministrator/formadministratorgeneral.h"
-#include "WidgetDev/formdevgeneral.h"
+#include "WidgetSpecialist/windowspecialist.h"
+#include "WidgetAdministrator/windowadmin.h"
+#include "WidgetDev/windowdev.h"
+#include "models/modelclassesincabinet.h"
+#include "settings/settings.h"
 
 
-bool loginIsValid(QString login);
 
 int main(int argc, char *argv[])
 {
+
+
     QApplication a(argc, argv);
+    QQuickWindow::setGraphicsApi(QSGRendererInterface::OpenGLRhi);
+
+    qmlRegisterType <ModelClassesInCabinet> ("Timetable", 1, 0, "ModelTimetable");
+
+    WindowSpecialist *winS;
+    WindowAdmin *winA;
+    WindowDev *winD;
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("sql/db.sqlite");
+    db.setDatabaseName(".//db.sqlite");
     db.open();
 
     DialogEnter d = DialogEnter();
-    MainWindow win = MainWindow();
 
     if (d.exec() == QDialog::Accepted)
     {
-        if (d.role() == QString("specialist") && loginIsValid(d.role(), d.login(), d.password()))
+        if (d.getRole() == QString("specialist") && loginIsValid(d.getRole(), d.getLogin(), d.getPassword()))
         {
-            FormSpecialistGeneral *gWid = new FormSpecialistGeneral();
-            gWid->setSpParam(d.login());
-            win.setCentralWidget(gWid);
-            win.show();
+            winS = new WindowSpecialist();
+            winS->setSpParam(d.getLogin());
+            winS->show();
         }
-        else if(d.role() == QString("administrator") && loginIsValid(d.role(), d.login(), d.password()))
+        else if(d.getRole() == QString("administrator") && loginIsValid(d.getRole(), d.getLogin(), d.getPassword()))
         {
-            FormAdministratorGeneral *gWid = new FormAdministratorGeneral();
-            gWid->setAdminParam(d.login());
-            win.setCentralWidget(gWid);
-            win.show();
+            winA = new WindowAdmin();
+            winA->setAdminParam(d.getLogin());
+            winA->show();
         }
-        else if(d.role() == QString("program developer") && loginIsValid(d.role(), d.login(), d.password()))
+        else if(d.getRole() == QString("program developer") && loginIsValid(d.getRole(), d.getLogin(), d.getPassword()))
         {
-            FormDevGeneral *gWid = new FormDevGeneral();
-            win.setCentralWidget(gWid);
-            win.show();
+            winD = new WindowDev();
+            winD->show();
         }
         else return 0;
     }

@@ -13,18 +13,18 @@ class DialogEnter : public QDialog
 {
     Q_OBJECT
 private:
-    QLineEdit *edit_login;
-    QLineEdit *edit_password;
-    QComboBox *edit_role;
+    QLineEdit *editLogin;
+    QLineEdit *editPassword;
+    QComboBox *editRole;
     Ui::DialogEnter *ui;
 
 public:
     explicit DialogEnter(QWidget *parent = nullptr);
 
 
-    QString login() {return edit_login->text();};
-    QString password() {return edit_password->text();}
-    QString role() {return edit_role->currentText();};
+    QString getLogin() {return editLogin->text();};
+    QString getPassword() {return editPassword->text();}
+    QString getRole() {return editRole->currentText();};
 
 
 

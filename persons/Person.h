@@ -3,7 +3,7 @@
 #include <QString>
 #include <QDate>
 #include <QPixmap>
-#include "Note.h"
+#include "objects/Note.h"
 
 
 class Person
@@ -11,37 +11,37 @@ class Person
 protected:
 	Person() {};
 public:
-    int id() { return i_id; };
-	QString name() { return s_name; };
-	QString patronymic() { return s_patronymic; };
-	QString surname() { return s_surname; };
-	QDate birthday() { return d_birthday; };
-	QPixmap photo() { return p_photo; };
-	Note note() { return no_note; };
-    QString login() { return s_login; };
-    QString password() { return s_password; };
+    int getId() { return id; };
+    QString getName() { return name; };
+    QString getPatronymic() { return patronymic; };
+    QString getSurname() { return surname; };
+    QDate getBirthday() { return birthday; };
+    QPixmap getPhoto() { return photo; };
+    Note getNote() { return note; };
+    QString getLogin() { return login; };
+    QString getPassword() { return password; };
 
-    void setId(int value){ i_id = value; }
-    void setName(const QString &value) { s_name = value; };
-    void setPatronymic(const QString &value) {s_patronymic = value; }
-    void setSurname(const QString &value) {s_surname = value; };
-    void setBirthday(const QDate &value) {d_birthday = value; };
-    void setPhoto(const QPixmap &value){ p_photo = value; };
-    void setNote(const Note &value){ no_note = value; };
-    void setLogin(const QString &value) { s_login = value; }
-    void setPassword(const QString &value) { s_password = value; }
+    void setId(int value){ id = value; }
+    void setName(const QString &value) { name = value; };
+    void setPatronymic(const QString &value) {patronymic = value; }
+    void setSurname(const QString &value) {surname = value; };
+    void setBirthday(const QDate &value) {birthday = value; };
+    void setPhoto(const QPixmap &value){ photo = value; };
+    void setNote(const Note &value){ note = value; };
+    void setLogin(const QString &value) { login = value; }
+    void setPassword(const QString &value) { password = value; }
 
     virtual ~Person() {};
 
 private:
-    int i_id;
-    QString s_login;
-    QString s_password;
-    QString s_name;
-    QString s_patronymic;
-	QString s_surname;
-	QDate d_birthday;
-	QPixmap p_photo;
-	Note no_note;
+    int id;
+    QString login;
+    QString password;
+    QString name;
+    QString patronymic;
+    QString surname;
+    QDate birthday;
+    QPixmap photo;
+    Note note;
 };
 

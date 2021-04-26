@@ -1,8 +1,7 @@
-QT       += core gui sql
-
+QT       += core gui sql quickwidgets quick quickcontrols2 qml
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++11
+CONFIG += c++17 qml_debug
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -10,38 +9,56 @@ CONFIG += c++11
 
 SOURCES += \
     DialogEnter/dialogenter.cpp \
-    Note.cpp \
-    WidgetAdministrator/formadministratorgeneral.cpp \
-    WidgetDev/formdevgeneral.cpp \
-    WidgetSpecialist/formspecialistgeneral.cpp \
+    WidgetAdministrator/widgetadministratortimetable.cpp \
+    WidgetAdministrator/windowadmin.cpp \
+    WidgetDev/windowdev.cpp \
+    WidgetSpecialist/widgetclientbase.cpp \
+    WidgetSpecialist/widgetprogram.cpp \
+    WidgetSpecialist/widgetstatistic.cpp \
+    WidgetSpecialist/widgettimetable.cpp \
+    WidgetSpecialist/windowspecialist.cpp \
     main.cpp \
-    mianwindow.cpp \
-    models/querymodelclient.cpp \
+    models/modelclassesincabinet.cpp \
+    objects/Note.cpp \
+    objects/cabinet.cpp \
+    objects/celltimetable.cpp \
+    objects/listcabinet.cpp \
     persons/Administrator.cpp \
     persons/Client.cpp \
-    persons/Person.cpp \
-    persons/Specialist.cpp
+    persons/Person.cpp
 
 HEADERS += \
     DialogEnter/dialogenter.h \
-    Note.h \
-    WidgetAdministrator/formadministratorgeneral.h \
-    WidgetDev/formdevgeneral.h \
-    WidgetSpecialist/formspecialistgeneral.h \
+    WidgetAdministrator/widgetadministratortimetable.h \
+    WidgetAdministrator/windowadmin.h \
+    WidgetDev/windowdev.h \
+    WidgetSpecialist/widgetclientbase.h \
+    WidgetSpecialist/widgetprogram.h \
+    WidgetSpecialist/widgetstatistic.h \
+    WidgetSpecialist/widgettimetable.h \
+    WidgetSpecialist/windowspecialist.h \
     loginIsValid.h \
-    mianwindow.h \
-    models/querymodelclient.h \
+    models/modelclassesincabinet.h \
+    objects/Note.h \
+    objects/cabinet.h \
+    objects/celltimetable.h \
+    objects/listcabinet.h \
     persons/Administrator.h \
     persons/Client.h \
     persons/Person.h \
-    persons/Specialist.h
+    persons/Specialist.h \
+    settings/settings.h
 
 FORMS += \
     DialogEnter/dialogenter.ui \
-    WidgetAdministrator/formadministratorgeneral.ui \
-    WidgetDev/formdevgeneral.ui \
-    WidgetSpecialist/formspecialistgeneral.ui \
-    mianwindow.ui
+    WidgetAdministrator/widgetadministratortimetable.ui \
+    WidgetAdministrator/windowadmin.ui \
+    WidgetDev/windowdev.ui \
+    WidgetSpecialist/widgetclientbase.ui \
+    WidgetSpecialist/widgetprogram.ui \
+    WidgetSpecialist/widgetstatistic.ui \
+    WidgetSpecialist/widgettimetable.ui \
+    WidgetSpecialist/windowspecialist.ui
 
 TRANSLATIONS += \
     PsyCenter_ru_RU.ts
@@ -51,5 +68,8 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES += \
-    sql/db.sqlite
+RESOURCES += \
+    res/resources.qrc \
+
+DISTFILES +=
+
