@@ -2,6 +2,7 @@
 #include <QTime>
 #include <QObject>
 #include <QString>
+#include <QVariant>
 
 class Settings: public QObject
 {
@@ -16,6 +17,7 @@ public:
     Q_INVOKABLE QList<QVariant> getListTime() const { return listTime; }
     Q_INVOKABLE int getCellPerHour() const { return cellPerHour; }
     Q_INVOKABLE int countSegments() { return (endCenter.hour() - startCenter.hour()) * cellPerHour; } // количество ячеек в дне
+    Q_INVOKABLE int countHours() {return endCenter.hour() - startCenter.hour(); }
 
     virtual ~Settings(){};
 
@@ -23,7 +25,7 @@ public:
 private:
     QTime startCenter = QTime(8, 00);
     QTime endCenter = QTime(20, 00);
-    int cellPerHour = 4; // количество ячеек в часе
+    int cellPerHour = 12; // количество ячеек в часе
     QList<QVariant> listTime;
 
 };
@@ -33,8 +35,8 @@ inline Settings::Settings(QObject *parent)
 {
     for( QTime i = startCenter; i < endCenter; i = i.addSecs(secInSegment()))
     {
-        QVariant var = QVariant::fromValue(i);
-        listTime.append(var);
+        QVariant qvar = QVariant::fromValue(i);
+        listTime.append(qvar);
     }
  }
 

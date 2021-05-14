@@ -2,8 +2,6 @@
 #include "ui_widgetadministratortimetable.h"
 #include "settings/settings.h"
 
-
-
 #include <QMdiArea>
 #include <QQmlApplicationEngine>
 #include <QSqlQuery>
@@ -23,7 +21,6 @@ WidgetAdministratorTimetable::WidgetAdministratorTimetable(QWidget *parent) :
     ui(new Ui::WidgetAdministratorTimetable)
 {
     Settings *settings = new Settings();
-
     createListCabinet();
     createQueryModelClasses();
     ui->setupUi(this);
@@ -71,7 +68,8 @@ void WidgetAdministratorTimetable::reloadQueryModelClasses()
                          "from class where cabinet = " + QString::number(cabinetId) +
                          " and DATE(date_and_time) = '" + date.toString("yyyy-MM-dd") + "'");
 
-        QMetaObject::invokeMethod(ui->quickWidget_timetable->rootObject(), "reloadItem");
+        qDebug() << 111;
+        QMetaObject::invokeMethod(ui->quickWidget_timetable->rootObject(), "reloadItems");
 
 
     }

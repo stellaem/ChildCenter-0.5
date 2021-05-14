@@ -8,7 +8,6 @@
 
 // правильный вариант qvariant_cast<Cabinet*>(listCabinet[0])->getId()
 
-
 int Cabinet::getId() const { return m_id; }
 
 QString Cabinet::getName() const { return m_name; }

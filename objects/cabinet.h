@@ -1,6 +1,4 @@
 #pragma once
-#pragma warning(disable:4100)
-
 #include <QList>
 #include <QObject>
 #include <QString>
@@ -11,7 +9,7 @@ class Cabinet: public QObject
     Q_OBJECT
 public:
     Cabinet(QObject *parent = nullptr){};
-    Cabinet(int m_id, QString m_name, QObject *parent = nullptr) {};
+    Cabinet(int m_id, QString m_name, QObject *parent = nullptr){};
 
     Q_PROPERTY(int id   WRITE   setId
                         READ    getId
@@ -36,11 +34,10 @@ public slots:
 signals:
     void idChanged(int id);
     void nameChanged(QString name);
-
-
 };
 
 
 
 
 Q_DECLARE_METATYPE( Cabinet )
+

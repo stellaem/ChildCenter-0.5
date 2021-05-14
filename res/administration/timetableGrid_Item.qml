@@ -1,20 +1,18 @@
-import QtQuick 2.0
+import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
 Rectangle {
     property string typeName: ""
-    property int classId: 0
+    property int idClass: 0
     property date time: new Date()
     property int cabinet: 0
     property int specialist: 0
-    property int duration: 0
     property int type: 0
-    height: duration
+
     color: "blue"
     border.width: 1
     radius: 10
-//    interactive: true
 
     MouseArea {
         acceptedButtons: Qt.LeftButton | Qt.RightButton
@@ -40,6 +38,6 @@ Rectangle {
         MenuItem { text: "Copy" }
         MenuItem { text: "Paste" }
     }
-}
+ }
 
 

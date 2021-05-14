@@ -1,4 +1,5 @@
-QT       += core gui sql quickwidgets quick quickcontrols2 qml
+QMAKE_CXXFLAGS_WARN_ON -= -Wall
+QT       += core gui sql quickwidgets quick qml quickcontrols2
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17 qml_debug
@@ -22,7 +23,6 @@ SOURCES += \
     objects/Note.cpp \
     objects/cabinet.cpp \
     objects/celltimetable.cpp \
-    objects/listcabinet.cpp \
     persons/Administrator.cpp \
     persons/Client.cpp \
     persons/Person.cpp
@@ -42,7 +42,6 @@ HEADERS += \
     objects/Note.h \
     objects/cabinet.h \
     objects/celltimetable.h \
-    objects/listcabinet.h \
     persons/Administrator.h \
     persons/Client.h \
     persons/Person.h \
@@ -69,7 +68,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    res/resources.qrc \
-
-DISTFILES +=
+    res/resources.qrc
 

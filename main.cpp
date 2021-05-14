@@ -3,6 +3,8 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
+#include <QQuickWindow>
+#include <QSGRendererInterface>
 
 
 #include "DialogEnter/dialogenter.h"
@@ -17,8 +19,6 @@
 
 int main(int argc, char *argv[])
 {
-
-
     QApplication a(argc, argv);
     QQuickWindow::setGraphicsApi(QSGRendererInterface::OpenGLRhi);
 

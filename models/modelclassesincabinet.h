@@ -1,5 +1,6 @@
 #pragma once
 #pragma warning(disable:4100)
+
 #include <QAbstractListModel>
 #include <QSqlQuery>
 #include <QDateTime>

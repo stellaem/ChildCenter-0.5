@@ -1,8 +1,9 @@
 <RCC>
     <qresource prefix="/QML">
-        <file>administration/adminTimetable.qml</file>
-        <file>administration/itemTimetable.qml</file>
-        <file>administration/emptyGridTimetable.qml</file>
+        <file>administration/timetableGrid.qml</file>
+        <file>administration/timetableGrid_Item.qml</file>
+        <file>administration/timetableHeader.qml</file>
+        <file>administration/timetableItem_func.js</file>
+        <file>administration/timetableTasks.qml</file>
     </qresource>
-    <qresource prefix="/"/>
 </RCC>

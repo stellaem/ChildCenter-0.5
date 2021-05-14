@@ -1,6 +1,3 @@
-#pragma once
-#pragma warning(disable:4100)
-
 #include <QDebug>
 #include <QDate>
 #include <QSqlError>
@@ -57,7 +54,8 @@ void ModelClassesInCabinet::createEmpryGrid()
     {
         CellTimetable cell = CellTimetable();
         cell.setIdSp(-1);
-        cell.setDateTimeStart(QDateTime ( date, QTime( settings.getStartCenter().addSecs( numCell * settings.secInSegment() ) ) ) );
+        cell.setDateTimeStart(QDateTime ( date, QTime( settings.getStartCenter().addSecs(
+                                                       numCell * settings.secInSegment() ) ) ) );
         cell.setDuration(settings.minInSegment());
         cell.setIsNotEmpty(false);
         mapCellTimetable.insert(cell.timeStart(), cell);
@@ -92,11 +90,13 @@ void ModelClassesInCabinet::createTimetable()
     listCellTimeTable.clear();
     foreach(CellTimetable cell, mapCellClass.values())
     {
-        // BUG если продолжительность занятия не кратно minInSegment, то count_cell будет не действительно, так как не целое число. нужно исправить
+        // BUG если продолжительность занятия не кратно minInSegment,
+        // то count_cell будет не действительно, так как не целое число. нужно исправить
         int count_cell = cell.getDuration() / settings.minInSegment();
         for(int i = 0; i < count_cell; i++)
         {
-            QMap<QTime, CellTimetable>::iterator elem = mapCellTimetable.find(cell.getDateTimeStart().time().addSecs(i*settings.secInSegment()));
+            QMap<QTime, CellTimetable>::iterator elem = mapCellTimetable.find(
+                        cell.getDateTimeStart().time().addSecs(i*settings.secInSegment()));
             mapCellTimetable.erase(elem);
         }
         mapCellTimetable.insert(cell.getDateTimeStart().time(), cell);

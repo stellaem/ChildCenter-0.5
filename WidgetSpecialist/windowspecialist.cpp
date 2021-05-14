@@ -2,6 +2,7 @@
 #include "ui_windowspecialist.h"
 #include <QSqlQuery>
 #include <typeinfo>
+#include <QDebug>
 
 WindowSpecialist::WindowSpecialist(QWidget *parent) :
     QMainWindow(parent),
