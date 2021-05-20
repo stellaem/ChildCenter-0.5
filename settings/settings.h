@@ -15,7 +15,7 @@ public:
     Q_INVOKABLE int minInSegment()const { return 60 / cellPerHour; } // количество минут в сегменте
     Q_INVOKABLE int secInSegment()const { return (60 / cellPerHour) * 60; } // количество секунд в сегменте
     Q_INVOKABLE QList<QVariant> getListTime() const { return listTime; }
-    Q_INVOKABLE int getCellPerHour() const { return cellPerHour; }
+    Q_INVOKABLE int countCellPerHour() const { return cellPerHour; }
     Q_INVOKABLE int countSegments() { return (endCenter.hour() - startCenter.hour()) * cellPerHour; } // количество ячеек в дне
     Q_INVOKABLE int countHours() {return endCenter.hour() - startCenter.hour(); }
 

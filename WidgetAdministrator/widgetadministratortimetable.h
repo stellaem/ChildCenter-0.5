@@ -32,12 +32,12 @@ private:
     QDate date;
     Ui::WidgetAdministratorTimetable *ui;
     QList<QVariant> listVCabinet;
-    QMap<QString, QVariant> mapVModelClassesInCabinet;
-    QMap<QString, QVariant> mapQueryModelClassesInCabinet;
+    QSqlQueryModel *queryModelCabinet;
+    QSqlQueryModel *queryModelClasses;
 
-    void createListCabinet(void);
-    void createQueryModelClasses(void);
+    void setModelCabinet(void);
     void reloadQueryModelClasses(void);
+    void setQueryModelClasses(void);
 
 
 

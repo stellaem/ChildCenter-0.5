@@ -18,61 +18,35 @@
 WidgetAdministratorTimetable::WidgetAdministratorTimetable(QWidget *parent) :
     QWidget(parent),
     date(QDate().currentDate()),
-    ui(new Ui::WidgetAdministratorTimetable)
+    ui(new Ui::WidgetAdministratorTimetable),
+    queryModelClasses(new QSqlQueryModel),
+    queryModelCabinet(new QSqlQueryModel)
 {
     Settings *settings = new Settings();
-    createListCabinet();
-    createQueryModelClasses();
+    setModelCabinet();
+    setQueryModelClasses();
     ui->setupUi(this);
-    ui->quickWidget_timetable->rootContext()->setContextProperty("listVCabinet", listVCabinet);
-    ui->quickWidget_timetable->rootContext()->setContextProperty("mapModelsClasses", mapQueryModelClassesInCabinet);
+    ui->quickWidget_timetable->rootContext()->setContextProperty("qMClasses", queryModelClasses);
+    ui->quickWidget_timetable->rootContext()->setContextProperty("qMCabinet", queryModelCabinet);
     ui->quickWidget_timetable->rootContext()->setContextProperty("settings", settings);
 
 }
 
-void WidgetAdministratorTimetable::createListCabinet()
+void WidgetAdministratorTimetable::setModelCabinet()
 {
-    QSqlQuery q = QSqlQuery("select id, name from cabinet");
-    while (q.next())
-    {
-        Cabinet *c = new Cabinet();
-        c->setId(q.value("id").toInt());
-        c->setName(q.value("name").toString());
-        QVariant var = QVariant::fromValue(c);
-        listVCabinet.append(var);
-    }
+    queryModelCabinet->setQuery("select id, name from cabinet");
 }
 
-void WidgetAdministratorTimetable::createQueryModelClasses()
+void WidgetAdministratorTimetable::setQueryModelClasses()
 {
-    QVariant c;
-    foreach(c, listVCabinet)
-    {   int cabinetId = c.value<Cabinet*>()->getId();
-        QSqlQueryModel *qModel = new QSqlQueryModel();
-        qModel->setQuery("select id, TIME(date_and_time), cabinet, specialist, duration, type "
-                         "from class where cabinet = " + QString::number(cabinetId) +
-                         " and DATE(date_and_time) = '" + date.toString("yyyy-MM-dd") + "'");
-        QVariant vModel = QVariant::fromValue(qModel);
-        mapQueryModelClassesInCabinet.insert(QString::number(cabinetId), vModel);
-    }
+    queryModelClasses->setQuery("select id, TIME(date_and_time), cabinet, specialist, duration, type "
+                                "from class where DATE(date_and_time) = '" + date.toString("yyyy-MM-dd") + "'");
 }
 
 void WidgetAdministratorTimetable::reloadQueryModelClasses()
 {
-    QVariant c;
-    foreach(c, listVCabinet)
-    {
-        int cabinetId = c.value<Cabinet*>()->getId();
-        QSqlQueryModel *model = mapQueryModelClassesInCabinet.value(QString::number(cabinetId)).value<QSqlQueryModel*>();
-        model->setQuery("select id, TIME(date_and_time), cabinet, specialist, duration, type "
-                         "from class where cabinet = " + QString::number(cabinetId) +
-                         " and DATE(date_and_time) = '" + date.toString("yyyy-MM-dd") + "'");
-
-        qDebug() << 111;
-        QMetaObject::invokeMethod(ui->quickWidget_timetable->rootObject(), "reloadItems");
-
-
-    }
+    setQueryModelClasses();
+    QMetaObject::invokeMethod(ui->quickWidget_timetable->rootObject(), "reloadItems");
 }
 
 void WidgetAdministratorTimetable::on_calendarWidget_clicked(const QDate &d)
@@ -84,5 +58,4 @@ void WidgetAdministratorTimetable::on_calendarWidget_clicked(const QDate &d)
 WidgetAdministratorTimetable::~WidgetAdministratorTimetable()
 {
     delete ui;
-//    qDeleteAll(listCabinet);
 }
