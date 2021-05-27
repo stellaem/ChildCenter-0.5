@@ -22,6 +22,7 @@ SOURCES += \
     models/modelclassesincabinet.cpp \
     objects/Note.cpp \
     objects/cabinet.cpp \
+    objects/calendarwidget.cpp \
     objects/celltimetable.cpp \
     persons/Administrator.cpp \
     persons/Client.cpp \
@@ -41,6 +42,7 @@ HEADERS += \
     models/modelclassesincabinet.h \
     objects/Note.h \
     objects/cabinet.h \
+    objects/calendarwidget.h \
     objects/celltimetable.h \
     persons/Administrator.h \
     persons/Client.h \

@@ -4,8 +4,9 @@ import QtQuick.Layouts
 import QtQuick.Window
 import "qrc:/QML/administration/timetableItem_func.js" as Func_items
 
-Item {
+Rectangle {
     id: _parent
+    color: '#F3F5F8'
     ListView {
         id: _headerCabinet
         height: 40

@@ -26,13 +26,55 @@ Item {
            radius: 10
            Drag.active: _mouseArea.drag.active
            Drag.hotSpot.x: width / 2
-           states: State {
-               when: _mouseArea.drag.active
-               ParentChange { target: _clsTile; parent: _parent }
-               AnchorChanges { target: _clsTile; anchors.verticalCenter: undefined; anchors.horizontalCenter: undefined }
-           }
+           states:
+                State {
+                   when: _mouseArea.drag.active
+                   ParentChange { target: _clsTile; parent: _parent }
+                   AnchorChanges { target: _clsTile; anchors.verticalCenter: undefined; anchors.horizontalCenter: undefined }
+                }
 
         }
+
+        MouseArea {
+            z:-1
+            id: _aaa
+            width:  parent.width
+            height: _mouseAreaDilator.height + 50
+            anchors.horizontalCenter: _mouseAreaDilator.horizontalCenter
+            anchors.verticalCenter: _mouseAreaDilator.verticalCenter
+            State {
+                when: _mouseAreaDilator.drag.active
+                PropertyChanges { target: _aaa; cursorShape : Qt.SizeVerCursor }
+            }
+        }
+        MouseArea {
+            id: _mouseAreaDilator
+            width:  parent.width
+            height:  (_parent.height/ _parent.Layout.rowSpan) * 3
+            anchors.left: parent.left
+            anchors.bottom: _clsTile.bottom
+            cursorShape : Qt.SizeVerCursor
+            drag.target: _dilator
+            onMouseYChanged: {
+                if(drag.active){
+                    if (mouseY - ( _parent.height/ _parent.Layout.rowSpan) > _parent.height/ _parent.Layout.rowSpan)
+                    {_parent.Layout.rowSpan++}
+                    else if(mouseY - ( _parent.height/ _parent.Layout.rowSpan) < 0)
+                    {_parent.Layout.rowSpan--}
+
+                }
+            }
+
+            Rectangle {
+                id: _dilator
+                anchors.fill: parent
+                Drag.active: _mouseAreaDilator.drag.active
+                opacity: 0
+                color: "red"
+            }
+        }
+
+
         acceptedButtons: Qt.LeftButton | Qt.RightButton
         hoverEnabled : true
         onClicked: (mouse) => {
@@ -46,6 +88,7 @@ Item {
             }
         }
     }
+
     Menu {
         id: _contextMenu
         width: 100
@@ -56,3 +99,9 @@ Item {
  }
 
 
+
+/*##^##
+Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+##^##*/

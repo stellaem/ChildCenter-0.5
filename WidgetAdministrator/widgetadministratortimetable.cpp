@@ -22,6 +22,7 @@ WidgetAdministratorTimetable::WidgetAdministratorTimetable(QWidget *parent) :
     queryModelClasses(new QSqlQueryModel),
     queryModelCabinet(new QSqlQueryModel)
 {
+
     Settings *settings = new Settings();
     setModelCabinet();
     setQueryModelClasses();
@@ -29,7 +30,6 @@ WidgetAdministratorTimetable::WidgetAdministratorTimetable(QWidget *parent) :
     ui->quickWidget_timetable->rootContext()->setContextProperty("qMClasses", queryModelClasses);
     ui->quickWidget_timetable->rootContext()->setContextProperty("qMCabinet", queryModelCabinet);
     ui->quickWidget_timetable->rootContext()->setContextProperty("settings", settings);
-
 }
 
 void WidgetAdministratorTimetable::setModelCabinet()

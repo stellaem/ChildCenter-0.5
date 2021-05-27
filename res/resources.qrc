@@ -5,5 +5,9 @@
         <file>administration/timetableHeader.qml</file>
         <file>administration/timetableItem_func.js</file>
         <file>administration/timetableTasks.qml</file>
+        <file>administration/menu.png</file>
+        <file>administration/search.png</file>
+        <file>administration/timetableSelectPeriod.qml</file>
+        <file>administration/calendar.png</file>
     </qresource>
 </RCC>
