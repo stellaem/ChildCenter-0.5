@@ -6,7 +6,7 @@ import "qrc:/QML/administration/timetableItem_func.js" as Func_items
 
 Rectangle {
     id: _parent
-    color: '#F3F5F8'
+    color: appearance.getColorBackground()
     ListView {
         id: _headerCabinet
         height: 40
@@ -21,12 +21,12 @@ Rectangle {
             id: _itemHeaderCabinet
             width: _headerCabinet.width / qMCabinet.rowCount()
             height: _headerCabinet.height
-            color: '#F3F5F8'
+            color: appearance.getColorBack()
             Text {
                 anchors.fill: parent
                 text: qMCabinet.data(qMCabinet.index(index, 1))
                 font.pixelSize: 20
-                color: '#617388'
+                color: appearance.getColorMain()
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
             }
@@ -44,7 +44,7 @@ Rectangle {
             Rectangle {
             width: _headerTime.width
             height: _headerTime.height / settings.countCellPerHour()
-            color: '#F3F5F8'
+            color: appearance.getColorBack()
 
 
             Rectangle {
@@ -58,14 +58,12 @@ Rectangle {
 
             Text {
                 anchors.fill: parent
-                font.pixelSize: 16
-                color: '#617388'
-
+                font.pixelSize: 20
+                color: appearance.getColorMain()
                 horizontalAlignment: Text.AlignRight
                 verticalAlignment: Text.AlignVCenter
                 text:  settings.getListTime()[index * settings.countCellPerHour()].toLocaleTimeString("hh:mm")
             }
-
         }
     }
     GridLayout {
@@ -89,7 +87,7 @@ Rectangle {
                     Rectangle {
                         visible: (index + 1) % settings.countHours()  ===  0 ? false : true
                         height: 1
-                        color: 'cadetblue'
+                        color: "cadetblue"
                         anchors.bottom: parent.bottom
                         anchors.left: parent.left
                         anchors.right: parent.right

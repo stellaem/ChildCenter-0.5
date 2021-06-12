@@ -9,5 +9,8 @@
         <file>administration/search.png</file>
         <file>administration/timetableSelectPeriod.qml</file>
         <file>administration/calendar.png</file>
+        <file>administration/open.png</file>
+        <file>administration/toLeft.png</file>
+        <file>administration/toRight.png</file>
     </qresource>
 </RCC>

@@ -9,21 +9,15 @@
 #include <QVariant>
 #include <QDate>
 
-#include "objects/cabinet.h"
-#include "settings/settings.h"
+#include "models/tablemodeltask.h"
 
-
-namespace Ui {
-class WidgetAdministratorTimetable;
-}
+namespace Ui { class WidgetAdministratorTimetable; }
 
 class WidgetAdministratorTimetable : public QWidget
 {
     Q_OBJECT
-
 public:
     explicit WidgetAdministratorTimetable(QWidget *parent = nullptr);
-
     ~WidgetAdministratorTimetable();
 
 private slots:
@@ -34,18 +28,11 @@ private:
     QList<QVariant> listVCabinet;
     QSqlQueryModel *queryModelCabinet;
     QSqlQueryModel *queryModelClasses;
+    TableModelTask *tableModelTask;
 
     void setModelCabinet(void);
     void reloadQueryModelClasses(void);
     void setQueryModelClasses(void);
-
-
-
-
-
-
-
-
 
 };
 

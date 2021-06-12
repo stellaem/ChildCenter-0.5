@@ -92,16 +92,8 @@ Item {
     Menu {
         id: _contextMenu
         width: 100
-        MenuItem { text: "Cut" }
-        MenuItem { text: "Copy" }
-        MenuItem { text: "Paste" }
+        MenuItem { text: qsTr("Cut") }
+        MenuItem { text: qsTr("Copy") }
+        MenuItem { text: qsTr("Paste") }
     }
- }
-
-
-
-/*##^##
-Designer {
-    D{i:0;autoSize:true;height:480;width:640}
 }
-##^##*/

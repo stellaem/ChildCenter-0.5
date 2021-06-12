@@ -20,11 +20,9 @@ private:
 
 public:
     explicit DialogEnter(QWidget *parent = nullptr);
-
-
-    QString getLogin() {return editLogin->text();};
-    QString getPassword() {return editPassword->text();}
-    QString getRole() {return editRole->currentText();};
+    QString getLogin() { return editLogin->text(); };
+    QString getPassword() { return editPassword->text(); }
+    QString getRole() { return editRole->currentText(); };
 
 
 

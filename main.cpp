@@ -14,26 +14,25 @@
 #include "WidgetDev/windowdev.h"
 #include "models/modelclassesincabinet.h"
 #include "settings/settings.h"
+#include "settings/appearance.h"
 
+Settings *settings = new Settings;
+Appearance *appearance = new Appearance;
 
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    QQuickWindow::setGraphicsApi(QSGRendererInterface::OpenGLRhi);
-
     qmlRegisterType <ModelClassesInCabinet> ("Timetable", 1, 0, "ModelTimetable");
-
+    QApplication a(argc, argv);
     WindowSpecialist *winS;
     WindowAdmin *winA;
     WindowDev *winD;
+    QQuickWindow::setGraphicsApi(QSGRendererInterface::OpenGLRhi);
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName(".//db.sqlite");
     db.open();
-
     DialogEnter d = DialogEnter();
-
     if (d.exec() == QDialog::Accepted)
     {
         if (d.getRole() == QString("specialist") && loginIsValid(d.getRole(), d.getLogin(), d.getPassword()))

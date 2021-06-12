@@ -3,12 +3,13 @@
 
 #include <QMainWindow>
 
-#include <persons/Specialist.h>
-
+#include "persons/Specialist.h"
 #include "widgetclientbase.h"
 #include "widgettimetable.h"
 #include "widgetstatistic.h"
 #include "widgetprogram.h"
+#include "settings/appearance.h"
+#include "settings/settings.h"
 
 namespace Ui {
 class WindowSpecialist;
@@ -17,20 +18,16 @@ class WindowSpecialist;
 class WindowSpecialist : public QMainWindow
 {
     Q_OBJECT
-
 public:
     explicit WindowSpecialist(QWidget *parent = nullptr);
     void setSpParam(QString login);
     ~WindowSpecialist();
-
 private slots:
     void on_pushButton_clientBase_clicked();
     void on_pushButton_timetable_clicked();
     void on_pushButton_statistic_clicked();
     void on_pushButton_program_clicked();
-
-    void on_actionOnStarter_triggered();
-
+    void on_actionOnStarter_triggered() { setCentralWidget(wStarter); }
 private:
     Ui::WindowSpecialist *ui;
     Specialist *sp;

@@ -21,7 +21,6 @@ public:
 
     virtual ~Settings(){};
 
-
 private:
     QTime startCenter = QTime(8, 00);
     QTime endCenter = QTime(20, 00);
@@ -29,7 +28,6 @@ private:
     QList<QVariant> listTime;
 
 };
-
 
 inline Settings::Settings(QObject *parent)
 {

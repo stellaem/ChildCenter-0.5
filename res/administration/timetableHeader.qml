@@ -5,7 +5,7 @@ import QtQuick.Controls
 
 Rectangle {
     id: _parent
-    color: '#F3F5F8'
+    color: appearance.getColorBackground()
 
     // ЗАГОЛОВОК РАСПИСАНИЕ
     RowLayout{
@@ -25,7 +25,7 @@ Rectangle {
         Text {
             text: qsTr("Timetable")
             font.pixelSize: 20
-            color: '#617388'
+            color: appearance.getColorMain()
         }
     }
 
@@ -41,8 +41,8 @@ Rectangle {
         background:
             Rectangle {
                 anchors.fill: _bottonAdd
-                color: '#F3F5F8'
-                border.color: _bottonAdd.down ? '#617388' : '#617388'
+                color: appearance.getColorBack()
+                border.color: _bottonAdd.down ? appearance.getColorBorder() : appearance.getColorBorder()
                 border.width: 1
                 radius: 2
             }
@@ -50,7 +50,7 @@ Rectangle {
             Text {
                 text: qsTr("Add")
                 font.pixelSize: 20
-                color: _bottonAdd.down ? '#617388' : '#617388'
+                color: _bottonAdd.down ? appearance.getColorMain() : appearance.getColorMain()
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
             }
@@ -64,15 +64,15 @@ Rectangle {
         anchors.left: _bottonAdd.right
         implicitHeight: 35
         anchors.verticalCenter: _parent.verticalCenter
-        color : '#617388'
+        color : appearance.getColorMain()
         font.pixelSize: 20
         verticalAlignment : TextInput.AlignVCenter
         anchors.rightMargin: 10
         background:
             Rectangle {
                 anchors.fill: _searchClasses
-                color: '#F3F5F8'
-                border.color: '#617388'
+                color: appearance.getColorBack()
+                border.color: appearance.getColorBorder()
                 border.width: 1
                 radius: 2
                 Image {

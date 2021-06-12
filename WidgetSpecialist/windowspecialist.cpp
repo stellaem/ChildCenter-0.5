@@ -1,5 +1,6 @@
 #include "windowspecialist.h"
 #include "ui_windowspecialist.h"
+#include "windowspecialist.h"
 #include <QSqlQuery>
 #include <typeinfo>
 #include <QDebug>
@@ -21,15 +22,12 @@ void WindowSpecialist::setSpParam(QString login)
     if ( q->exec())
     {
         q->first();
-
         sp->setId(q->value("id").toInt());
         sp->setName(q->value("name").toString());
         sp->setPatronymic(q->value("patronymic").toString());
         sp->setSurname(q->value("surname").toString());
         sp->setLogin(q->value("login").toString());
-    }
-    else qCritical() << "cannot execute query";
-
+    } else qCritical() << "cannot execute query";
 }
 
 WindowSpecialist::~WindowSpecialist()
@@ -70,8 +68,13 @@ void WindowSpecialist::on_pushButton_program_clicked()
     setCentralWidget(wProgram);
 }
 
-void WindowSpecialist::on_actionOnStarter_triggered()
-{
-    setCentralWidget(wStarter);
-}
+
+
+
+
+
+
+
+
+
 

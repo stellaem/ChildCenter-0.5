@@ -10,11 +10,6 @@ WindowAdmin::WindowAdmin(QWidget *parent) :
     ui->setupUi(this);
 }
 
-void WindowAdmin::setAdminParam(QString login)
-{
-
-}
-
 WindowAdmin::~WindowAdmin()
 {
     delete ui;
@@ -23,13 +18,12 @@ WindowAdmin::~WindowAdmin()
     delete wStarter;
 }
 
-void WindowAdmin::on_pushButton_task_clicked()
-{
-
-}
-
 void WindowAdmin::on_pushButton_timetable_clicked()
 {
     wStarter = takeCentralWidget();
     setCentralWidget(wTimetable);
 }
+
+
+
+

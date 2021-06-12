@@ -20,13 +20,14 @@ SOURCES += \
     WidgetSpecialist/windowspecialist.cpp \
     main.cpp \
     models/modelclassesincabinet.cpp \
+    models/tablemodeltask.cpp \
     objects/Note.cpp \
     objects/cabinet.cpp \
-    objects/calendarwidget.cpp \
     objects/celltimetable.cpp \
     persons/Administrator.cpp \
     persons/Client.cpp \
-    persons/Person.cpp
+    persons/Person.cpp \
+    settings/appearance.cpp
 
 HEADERS += \
     DialogEnter/dialogenter.h \
@@ -40,14 +41,17 @@ HEADERS += \
     WidgetSpecialist/windowspecialist.h \
     loginIsValid.h \
     models/modelclassesincabinet.h \
+    models/tablemodeltask.h \
     objects/Note.h \
     objects/cabinet.h \
-    objects/calendarwidget.h \
     objects/celltimetable.h \
     persons/Administrator.h \
     persons/Client.h \
     persons/Person.h \
     persons/Specialist.h \
+    settings/appearance.h \
+    settings/appearance.h \
+    settings/appearance.h \
     settings/settings.h
 
 FORMS += \

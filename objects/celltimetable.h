@@ -6,7 +6,11 @@
 class CellTimetable
 {
 public:
-    CellTimetable() { }
+    CellTimetable()
+    {
+        // TODO создать список клиентов у ячейки.
+
+    }
 
     QDateTime getDateTimeStart() const { return dateAndTimeStart; }
     void setDateTimeStart(const QDateTime &value) { dateAndTimeStart = value; }

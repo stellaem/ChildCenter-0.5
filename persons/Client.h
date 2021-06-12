@@ -19,7 +19,6 @@ private:
     QList <QPixmap> listSurvey;
     QList <Request> listRequest;
     QList <Recommendation> listRecommendation;
-
 };
 
 class Recommendation
