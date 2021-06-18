@@ -8,32 +8,20 @@ class Cabinet: public QObject
 {
     Q_OBJECT
 public:
-    Cabinet(QObject *parent = nullptr){};
-    Cabinet(int m_id, QString m_name, QObject *parent = nullptr){};
-
-    Q_PROPERTY(int id   WRITE   setId
-                        READ    getId
-                        NOTIFY  idChanged)
-
-    Q_PROPERTY(QString name WRITE setName
-                            READ getName
-                            NOTIFY nameChanged)
+    Cabinet(int id, QObject *parent = nullptr) : QObject(parent), id(id) {}
+    const QString &getName() const;
+    void setName(const QString &newName);
     Q_INVOKABLE int getId() const;
-    QString getName() const;
-
-    virtual ~Cabinet(){};
-
-private:
-    QString m_name;
-    int m_id;
-
-public slots:
-    void setId(int id);
-    void setName(QString name);
 
 signals:
-    void idChanged(int id);
-    void nameChanged(QString name);
+    void nameChanged();
+
+private:
+    int id;
+    QString name;
+
+    Q_PROPERTY(QString name READ getName WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(int id READ getId CONSTANT)
 };
 
 

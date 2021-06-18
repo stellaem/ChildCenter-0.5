@@ -19,14 +19,16 @@ SOURCES += \
     WidgetSpecialist/widgettimetable.cpp \
     WidgetSpecialist/windowspecialist.cpp \
     main.cpp \
-    models/modelclassesincabinet.cpp \
     models/tablemodeltask.cpp \
     objects/Note.cpp \
     objects/cabinet.cpp \
-    objects/celltimetable.cpp \
+    objects/cellclass.cpp \
+    objects/qualification.cpp \
+    objects/recommendation.cpp \
+    objects/request.cpp \
     persons/Administrator.cpp \
     persons/Client.cpp \
-    persons/Person.cpp \
+    persons/Specialist.cpp \
     settings/appearance.cpp
 
 HEADERS += \
@@ -40,14 +42,15 @@ HEADERS += \
     WidgetSpecialist/widgettimetable.h \
     WidgetSpecialist/windowspecialist.h \
     loginIsValid.h \
-    models/modelclassesincabinet.h \
     models/tablemodeltask.h \
     objects/Note.h \
     objects/cabinet.h \
-    objects/celltimetable.h \
+    objects/cellclass.h \
+    objects/qualification.h \
+    objects/recommendation.h \
+    objects/request.h \
     persons/Administrator.h \
     persons/Client.h \
-    persons/Person.h \
     persons/Specialist.h \
     settings/appearance.h \
     settings/appearance.h \

@@ -22,7 +22,7 @@ Appearance *appearance = new Appearance;
 
 int main(int argc, char *argv[])
 {
-    qmlRegisterType <ModelClassesInCabinet> ("Timetable", 1, 0, "ModelTimetable");
+//    qmlRegisterType <ModelClassesInCabinet> ("Timetable", 1, 0, "ModelTimetable");
     QApplication a(argc, argv);
     WindowSpecialist *winS;
     WindowAdmin *winA;
@@ -38,13 +38,13 @@ int main(int argc, char *argv[])
         if (d.getRole() == QString("specialist") && loginIsValid(d.getRole(), d.getLogin(), d.getPassword()))
         {
             winS = new WindowSpecialist();
-            winS->setSpParam(d.getLogin());
+            winS->setSp(d.getLogin());
             winS->show();
         }
         else if(d.getRole() == QString("administrator") && loginIsValid(d.getRole(), d.getLogin(), d.getPassword()))
         {
             winA = new WindowAdmin();
-            winA->setAdminParam(d.getLogin());
+            winA->setAdmin(d.getLogin());
             winA->show();
         }
         else if(d.getRole() == QString("program developer") && loginIsValid(d.getRole(), d.getLogin(), d.getPassword()))

@@ -7,7 +7,7 @@
 #include <QList>
 #include <QMap>
 
-#include "objects/celltimetable.h"
+#include "objects/cellclass.h"
 #include "settings/settings.h"
 
 
@@ -36,9 +36,9 @@ private:
     int cabinet;
     QDate date;
 
-    QMap<QTime, CellTimetable > mapCellClass; // сетка занятий
-    QMap<QTime, CellTimetable > mapCellTimetable; // сводная сетка расписания
-    QList<CellTimetable> listCellTimeTable;
+    QMap<QTime, CellClass > mapCellClass; // сетка занятий
+    QMap<QTime, CellClass > mapCellTimetable; // сводная сетка расписания
+    QList<CellClass> listCellTimeTable;
 
     void findClassesInBase(void);
     void createTimetable(void);

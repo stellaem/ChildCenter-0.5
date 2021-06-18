@@ -1,37 +1,57 @@
 #pragma once
-
+#include <QObject>
 #include <QList>
-#include "Person.h"
+#include <QDate>
+#include <QPixmap>
 
-class Qualification;
+#include "objects/Note.h"
+#include "objects/qualification.h"
 
-class Specialist : virtual public Person // name, patronymic, surname, birthday, photo, note
+class Specialist : public QObject
 {
+    Q_OBJECT
 public:
-	Specialist() : Person() {};
-
-    void setQualification(const QList<Qualification> & value) { listQualification = value; };
+    Specialist(int id, QObject *parent = nullptr);
+    Specialist(QString login, QObject *parent = nullptr);
 	virtual ~Specialist() {};
 
-    QList<Qualification> getQualification() const{ return listQualification; };
+    int getId() const;
+    const QString &getLogin() const;
+    void setLogin(const QString &newLogin);
+    const QString &getName() const;
+    void setName(const QString &newName);
+    const QString &getPatronymic() const;
+    void setPatronymic(const QString &newPatronymic);
+    const QString &getSurname() const;
+    void setSurname(const QString &newSurname);
+    const QDate &getBirthday() const;
+    void setBirthday(const QDate &newBirthday);
 
-    int getId() const{ return id; };
-    void setId(int value){ id = value; }
-;
+signals:
+    void loginChanged();
+    void nameChanged();
+    void patronymicChanged();
+    void surnameChanged();
+    void birthdayChanged();
 
 private:
     int id;
-    QList<Qualification> listQualification;
-};
-
-class Qualification
-{
-public:
-    Qualification() {};
-    virtual ~Qualification() {};
-private:
+    QString login;
+    QString password;
     QString name;
-    QPixmap document;
-    QDate confirm;
+    QString patronymic;
+    QString surname;
+    QDate birthday;
+    QPixmap photo;
+    Note note;
+    QList<Qualification> listQualification;
+    Q_PROPERTY(int id READ getId CONSTANT)
+    Q_PROPERTY(QString login READ getLogin WRITE setLogin NOTIFY loginChanged)
+    Q_PROPERTY(QString name READ getName WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QString patronymic READ getPatronymic WRITE setPatronymic NOTIFY patronymicChanged)
+    Q_PROPERTY(QString surname READ getSurname WRITE setSurname NOTIFY surnameChanged)
+    Q_PROPERTY(QDate birthday READ getBirthday WRITE setBirthday NOTIFY birthdayChanged)
 };
 
+
+Q_DECLARE_METATYPE( Specialist )

@@ -7,7 +7,7 @@ public:
 	Note() {};
 	virtual ~Note() {};
 private:
-	int i_id;
-	QString s_text;
+    int id;
+    QString text;
 };
 

@@ -1,39 +1,62 @@
-#include "Client.h"
-
+#include "persons/Specialist.h"
 #include <QSqlQuery>
 /**************************************************************************************************/
-Client::Client(int id, QObject *parent) : QObject(parent), id(id)
+Specialist::Specialist(int id, QObject *parent): QObject(parent), id(id)
 {
     QSqlQuery q = QSqlQuery();
-    q.prepare("select * from client where id = :id");
+    q.prepare("select * from specialist where id = :id");
     q.bindValue(":id", id);
     q.exec();
     q.next();
 
-    numCard = q.value("num_card").toInt();
+    login = q.value("login").toString();
     name = q.value("name").toString();
     patronymic = q.value("patronymic").toString();
     surname = q.value("surname").toString();
     birthday = q.value("birthday").toDate();
-    firstConsult =  q.value("first_consult").toDate();
+
+}
+
+Specialist::Specialist(QString login, QObject *parent): QObject(parent), login(login)
+{
+    QSqlQuery q = QSqlQuery();
+    q.prepare("select * from specialist where login = :login");
+    q.bindValue(":login", login);
+    q.exec();
+    q.next();
+
+    id = q.value("id").toInt();
+    name = q.value("name").toString();
+    patronymic = q.value("patronymic").toString();
+    surname = q.value("surname").toString();
+    birthday = q.value("birthday").toDate();
+
 }
 /*------------------------------------------------------------------------------------------------*/
-int Client::getId() const
+int Specialist::getId() const
 {
     return id;
 }
 /*------------------------------------------------------------------------------------------------*/
-int Client::getNumCard() const
+const QString &Specialist::getLogin() const
 {
-    return numCard;
+    return login;
 }
 /*------------------------------------------------------------------------------------------------*/
-const QString &Client::getName() const
+void Specialist::setLogin(const QString &newLogin)
+{
+    if (login == newLogin)
+        return;
+    login = newLogin;
+    emit loginChanged();
+}
+/*------------------------------------------------------------------------------------------------*/
+const QString &Specialist::getName() const
 {
     return name;
 }
 /*------------------------------------------------------------------------------------------------*/
-void Client::setName(const QString &newName)
+void Specialist::setName(const QString &newName)
 {
     if (name == newName)
         return;
@@ -41,12 +64,12 @@ void Client::setName(const QString &newName)
     emit nameChanged();
 }
 /*------------------------------------------------------------------------------------------------*/
-const QString &Client::getPatronymic() const
+const QString &Specialist::getPatronymic() const
 {
     return patronymic;
 }
-/*------------------------------------------------------------------------------------------------*/
-void Client::setPatronymic(const QString &newPatronymic)
+/*-------------------------------------------------------------- ----------------------------------*/
+void Specialist::setPatronymic(const QString &newPatronymic)
 {
     if (patronymic == newPatronymic)
         return;
@@ -54,12 +77,12 @@ void Client::setPatronymic(const QString &newPatronymic)
     emit patronymicChanged();
 }
 /*------------------------------------------------------------------------------------------------*/
-const QString &Client::getSurname() const
+const QString &Specialist::getSurname() const
 {
     return surname;
 }
 /*------------------------------------------------------------------------------------------------*/
-void Client::setSurname(const QString &newSurname)
+void Specialist::setSurname(const QString &newSurname)
 {
     if (surname == newSurname)
         return;
@@ -67,12 +90,12 @@ void Client::setSurname(const QString &newSurname)
     emit surnameChanged();
 }
 /*------------------------------------------------------------------------------------------------*/
-const QDate &Client::getBirthday() const
+const QDate &Specialist::getBirthday() const
 {
     return birthday;
 }
 /*------------------------------------------------------------------------------------------------*/
-void Client::setBirthday(const QDate &newBirthday)
+void Specialist::setBirthday(const QDate &newBirthday)
 {
     if (birthday == newBirthday)
         return;

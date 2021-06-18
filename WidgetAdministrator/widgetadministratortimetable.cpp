@@ -35,12 +35,15 @@ WidgetAdministratorTimetable::WidgetAdministratorTimetable(QWidget *parent) :
     ui->quickWidget_tasks->rootContext()->setContextProperty("tableModelTask", tableModelTask);
 }
 
-void WidgetAdministratorTimetable::setModelCabinet(){ queryModelCabinet->setQuery("select id, name from cabinet"); }
+void WidgetAdministratorTimetable::setModelCabinet()
+{
+    queryModelCabinet->setQuery("select id, name from cabinet");
+}
 
 void WidgetAdministratorTimetable::setQueryModelClasses()
 {
     queryModelClasses->setQuery("select id, TIME(date_and_time), cabinet, specialist, duration, type "
-                                "from class where DATE(date_and_time) = '" + date.toString("yyyy-MM-dd") + "'");
+        "from class where DATE(date_and_time) = '" + date.toString("yyyy-MM-dd") + "'");
 }
 
 void WidgetAdministratorTimetable::reloadQueryModelClasses()

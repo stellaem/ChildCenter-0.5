@@ -20,7 +20,7 @@ class WindowSpecialist : public QMainWindow
     Q_OBJECT
 public:
     explicit WindowSpecialist(QWidget *parent = nullptr);
-    void setSpParam(QString login);
+    void setSp(QString login);
     ~WindowSpecialist();
 private slots:
     void on_pushButton_clientBase_clicked();
